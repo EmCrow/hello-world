@@ -4,6 +4,8 @@ Created on Fri Aug 10 16:49:08 2018
 
 @author: mcroc
 """
+def: TryGit():
+    pass
 def NextMove(xMove, yMove, maze):
     NewPoint = 2
     try:
@@ -28,7 +30,7 @@ def PossibleMoves(x,y,maze, pastMove):
     except:
         IndexError
     return False
-    
+
 def answer(maze, pastMove = [[0,0]],position = [0,0],x = 0,y = 0, moveCount = 1):
 
     while position != [len(maze) -1, len(maze)-1] and moveCount < 30:
@@ -39,19 +41,19 @@ def answer(maze, pastMove = [[0,0]],position = [0,0],x = 0,y = 0, moveCount = 1)
                 nextChoices.append(i)
 #            print(PossibleMoves(i[0],i[1],maze, pastMove), end=  '    ')
             print(nextChoices, position)
-        
+
 #        if len(nextChoices) > 1:
 #            lengthList = []
 #            for i in nextCoices:
 #                branchCount = answer(maze,pastMove,position,x,y,moveCount)
-#                
-#            
+#
+#
 
         xPoint = nextChoices[0][0]
         yPoint = nextChoices[0][1]
         varChanger = nextChoices[0][2]
         message = nextChoices[0][3]
-        
+
         if NextMove(xPoint,yPoint,maze) == 0 and Inside(xPoint,maze) and [xPoint, yPoint] not in pastMove:
             position , pastMove ,message= Movement(xPoint, yPoint, maze, pastMove, message)
             x= xPoint if varChanger == 'x' else x
@@ -61,28 +63,28 @@ def answer(maze, pastMove = [[0,0]],position = [0,0],x = 0,y = 0, moveCount = 1)
 #        moveCount +=1
     return moveCount
 
-import random 
+import random
 def Maze(x=5):
     maze = []
-    
+
     for i in range(x):
         maze.append([])
         for j in range(x):
             maze[i].append(random.randint(0,1))
     maze[0][0] =0
-    maze[-1][-1] = 0    
+    maze[-1][-1] = 0
 
-    return maze 
+    return maze
 
 #maze =   [[0, 0, 0, 0, 0, 0],
-#         [0, 1, 1, 1, 1, 0], 
-#         [0, 0, 0, 0, 0, 0], 
-#         [0, 1, 1, 1, 1, 1], 
-#         [0, 1, 1, 1, 1, 1], 
+#         [0, 1, 1, 1, 1, 0],
+#         [0, 0, 0, 0, 0, 0],
+#         [0, 1, 1, 1, 1, 1],
+#         [0, 1, 1, 1, 1, 1],
 #         [0, 0, 0, 0, 0, 0]]
-#maze = [[0, 1, 1, 0], 
-#        [0, 0, 0, 1], 
-#        [1, 1, 0, 0], 
+#maze = [[0, 1, 1, 0],
+#        [0, 0, 0, 1],
+#        [1, 1, 0, 0],
 #        [1, 1, 1, 0]]
 y = Maze()
 print('\n')
